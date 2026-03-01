@@ -1,26 +1,28 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { extend } from 'zod/mini';
 
 export interface IFAQ extends Document {
-    id: string;
-    faq: string;
+  faqQuestion: string;
+  faqAnswer: string;
 }
 
-const faqSchema: Schema<IFAQ> = new Schema<IFAQ>(
-    {
-        id: {
-            type: String,
-            unique: true,
-            auto: true,
-            default: () => new Date().getTime().toString(),
-        },
-        faq: {
-            type: String,
-            required: true,
-        },
+const FAQSchema: Schema<IFAQ> = new Schema(
+  {
+    faqQuestion: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    { timestamps: true }
+
+    faqAnswer: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
 export default mongoose.models.FAQ ||
-    mongoose.model<IFAQ>('FAQ', faqSchema);
+  mongoose.model<IFAQ>('FAQ', FAQSchema);

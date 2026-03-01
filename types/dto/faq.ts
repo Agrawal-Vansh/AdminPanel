@@ -1,17 +1,19 @@
 // Request DTOs
 export interface CreateFAQRequest {
-  faq: string;
+  faqQuestion: string;
+  faqAnswer: string;
 }
 
 export interface UpdateFAQRequest {
-  faq: string;
+  faqQuestion?: string;
+  faqAnswer?: string;
 }
 
 // Response DTOs
 export interface FAQResponse {
   _id: string;
-  id: string;
-  faq: string;
+  faqQuestion: string;
+  faqAnswer: string;
   createdAt: string;
   updatedAt: string;
 }

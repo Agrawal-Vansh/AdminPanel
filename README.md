@@ -493,3 +493,166 @@ Fetch **society convenor and co-convenor details**.
 }
 ```
 </details>
+
+## API GET /api/faq  
+Get **all FAQs**.
+
+> 🌐 Public Route  
+> - Returns all FAQ entries sorted by latest first
+
+---
+
+### 📥 Expected Request Format
+<details>
+<summary>Click to expand</summary>
+
+No request body required.
+
+</details>
+
+---
+
+### 📤 Expected Response Format
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "665a1f...",
+      "faqQuestion": "How to register?",
+      "faqAnswer": "Go to signup page.",
+      "createdAt": "2026-03-01T10:00:00.000Z",
+      "updatedAt": "2026-03-01T10:00:00.000Z"
+    }
+  ]
+}
+```
+</details>
+
+## API POST /api/faq
+
+Create a new FAQ.
+
+🔒 ADMIN only
+
+📥 Expected Request Format
+<details> <summary>Click to expand</summary>
+
+```json
+{
+  "faqQuestion": "How to register?",
+  "faqAnswer": "Go to signup page."
+}
+```
+</details>
+
+📤 Expected Response Format
+
+<details> <summary>Click to expand</summary>
+
+```json
+{
+  "success": true,
+  "message": "FAQ created successfully",
+  "data": {
+    "_id": "665a1f...",
+    "faqQuestion": "How to register?",
+    "faqAnswer": "Go to signup page.",
+    "createdAt": "2026-03-01T10:00:00.000Z",
+    "updatedAt": "2026-03-01T10:00:00.000Z"
+  }
+}
+```
+</details>
+
+
+## API GET /api/faq/[id]
+
+Get a single FAQ by id.
+
+🌐 Public Route
+
+📥 Expected Request Format
+<details> <summary>Click to expand</summary>
+GET /api/faq/<faqId>
+</details>
+📤 Expected Response Format
+<details> <summary>Click to expand</summary>
+
+```json
+{
+  "success": true,
+  "data": {
+    "_id": "665a1f...",
+    "faqQuestion": "How to register?",
+    "faqAnswer": "Go to signup page.",
+    "createdAt": "2026-03-01T10:00:00.000Z",
+    "updatedAt": "2026-03-01T10:00:00.000Z"
+  }
+}
+```
+</details>
+
+## API PATCH /api/faq/[id]
+
+Update an existing FAQ.
+
+🔒 ADMIN only
+
+Partial update supported
+
+📥 Expected Request Format
+<details> <summary>Click to expand</summary>
+
+```json
+{
+  "faqQuestion": "Updated question",
+  "faqAnswer": "Updated answer"
+}
+```
+(Any one field can also be sent)
+
+</details>
+📤 Expected Response Format
+<details> <summary>Click to expand</summary>
+
+```json
+{
+  "success": true,
+  "message": "FAQ updated successfully",
+  "data": {
+    "_id": "665a1f...",
+    "faqQuestion": "Updated question",
+    "faqAnswer": "Updated answer",
+    "createdAt": "2026-03-01T10:00:00.000Z",
+    "updatedAt": "2026-03-02T08:00:00.000Z"
+  }
+}
+```
+
+</details>
+
+## API DELETE /api/faq/[id]
+
+Delete an FAQ.
+
+🔒 ADMIN only
+
+📥 Expected Request Format
+<details> <summary>Click to expand</summary>
+DELETE /api/faq/<faqId>
+</details>
+📤 Expected Response Format
+<details> <summary>Click to expand</summary>
+
+```json
+{
+  "success": true,
+  "message": "FAQ deleted successfully"
+}
+```
+
+</details>
